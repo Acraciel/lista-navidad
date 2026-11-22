@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Lista Navideña 🎅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+
+        /* Luces navideñas */
+        .christmas-lights { position: fixed; top: 0; left: 0; width: 100%; height: 60px; z-index: 50; pointer-events: none; }
+        .light { position: absolute; width: 14px; height: 14px; border-radius: 50%; animation: blink 1.5s infinite alternate; box-shadow: 0 0 12px currentColor; }
+        @keyframes blink { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+
+        /* Decoraciones flotantes */
+        .floating-deco { position: fixed; font-size: 3rem; animation: float 4s ease-in-out infinite; z-index: 0; opacity: 0.5; pointer-events: none; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-25px) rotate(8deg); } }
+
+        /* Efecto caja regalo */
+        .gift-box { transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .gift-box:hover { transform: translateY(-16px) rotate(-1deg); }
+        .gift-box .ribbon { transform: rotate(45deg); right: -40px; top: 12px; }
+
+        /* Brillo del título */
+        @keyframes glow { from { text-shadow: 0 0 20px #ffd700, 3px 3px 6px rgba(0,0,0,0.3); } to { text-shadow: 0 0 40px #ffd700, 0 0 60px #ffd700, 3px 3px 6px rgba(0,0,0,0.3); } }
+        .glow-text { animation: glow 2s ease-in-out infinite alternate; }
+
+        /* Imagen con zoom suave al hover */
+        .gift-img-wrap { overflow: hidden; }
+        .gift-img-wrap img { transition: transform 0.4s ease; }
+        .gift-box:hover .gift-img-wrap img { transform: scale(1.1); }
+
+        /* Botón ripple */
+        .btn-ripple { position: relative; overflow: hidden; }
+        .btn-ripple::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%,-50%); transition: width 0.6s, height 0.6s; }
+        .btn-ripple:hover::after { width: 300px; height: 300px; }
+
+        /* Header clip-path */
+        .header-shape { clip-path: ellipse(100% 100% at 50% 0%); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-100 via-red-100 to-pink-100 min-h-screen overflow-x-hidden">
+
+    <!-- Luces navideñas -->
+    <div class="christmas-lights" id="lights"></div>
+
+    <!-- Decoraciones flotantes -->
+    <div class="floating-deco" style="top:18%;left:4%">🎄</div>
+    <div class="floating-deco" style="top:38%;right:6%;animation-delay:1s">⭐</div>
+    <div class="floating-deco" style="bottom:22%;left:10%;animation-delay:2s">🎁</div>
+    <div class="floating-deco" style="top:58%;right:12%;animation-delay:0.5s">❄️</div>
+    <div class="floating-deco" style="bottom:12%;right:4%;animation-delay:1.5s">🔔</div>
+
+    <!-- Header -->
+    <header class="header-shape bg-gradient-to-r from-red-700 via-red-500 to-red-700 text-center py-16 px-4 pb-24 relative z-10">
+        <h1 class="font-pacifico text-5xl md:text-6xl text-yellow-300 glow-text mb-3">Lista Navideña</h1>
+        <p class="text-white text-lg md:text-xl font-semibold drop-shadow-md">✨ Rodrigo ✨</p>
+    </header>
+
+    <!-- Grid de regalos -->
+    <main class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
+
+        <!-- 1. Mangaline Antagonista -->
+        <a href="https://mangaline.cl/" target="_blank" rel="noopener noreferrer" class="gift-box bg-white rounded-3xl shadow-lg hover:shadow-2xl border-4 border-transparent hover:border-yellow-400 overflow-visible block group flex flex-col">
+            <div class="relative">
+                <div class="gift-img-wrap h-80 md:h-96 bg-gray-50 p-4 rounded-t-3xl">
+                    <img src="https://mangaline.cl/wp-content/uploads/2025/03/Antagonista-6-portada-01.png" alt="Antagonista Vol. 6" class="w-full h-full object-contain">
+                </div>
+                <span class="ribbon absolute bg-gradient-to-r from-red-600 to-red-400 text-white text-xs font-bold px-8 py-1.5 shadow-md z-10">¡Nuevo!</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-bold text-red-700 mb-2">📚 Mangaline Antagonista</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">Volúmenes 6 y 7 de la serie Antagonista. Una historia épica que te mantendrá al borde del asiento.</p>
+                <span class="btn-ripple inline-block bg-gradient-to-r from-red-600 to-red-400 text-white font-bold py-2 px-6 rounded-full shadow-md group-hover:scale-105 transition-transform self-start mt-auto">Ver en Mangaline →</span>
+            </div>
+        </a>
+
+        <!-- 2. Wildlama Polera -->
+        <a href="https://www.wildlama.com/products/polera-rolan-organica-negra-hombre?variant=46692824547517" target="_blank" rel="noopener noreferrer" class="gift-box bg-white rounded-3xl shadow-lg hover:shadow-2xl border-4 border-transparent hover:border-yellow-400 overflow-visible block group flex flex-col">
+            <div class="relative">
+                <div class="gift-img-wrap h-80 md:h-96 bg-gray-50 p-2 flex rounded-t-3xl">
+                    <img src="https://www.wildlama.com/cdn/shop/files/polera-rolan-organica-blanca-hombre-6.png?v=1783028519&width=350" alt="Polera Wildlama blanca" class="w-1/2 h-full object-contain">
+                    <img src="https://www.wildlama.com/cdn/shop/files/polera-rolan-organica-negra-hombre-5.png?v=1783028641&width=350" alt="Polera Wildlama negra" class="w-1/2 h-full object-contain">
+                </div>
+                <span class="ribbon absolute bg-gradient-to-r from-emerald-600 to-emerald-400 text-white text-xs font-bold px-8 py-1.5 shadow-md z-10">Orgánico</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-bold text-red-700 mb-2">👕 Wildlama Polera Alerce Milenario</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">Polera orgánica SIZE: XL. Diseño inspirado en los bosques ancestrales de Chile. Disponible en blanco y negro.</p>
+                <span class="btn-ripple inline-block bg-gradient-to-r from-red-600 to-red-400 text-white font-bold py-2 px-6 rounded-full shadow-md group-hover:scale-105 transition-transform self-start mt-auto">Ver en Wildlama →</span>
+            </div>
+        </a>
+
+        <!-- 3. Anime Shirt Hokori -->
+        <a href="https://hokori.cl/products/zoro-santoryu-polera?variant=67625336471844" target="_blank" rel="noopener noreferrer" class="gift-box bg-white rounded-3xl shadow-lg hover:shadow-2xl border-4 border-transparent hover:border-yellow-400 overflow-visible block group flex flex-col">
+            <div class="relative">
+                <div class="gift-img-wrap h-80 md:h-96 bg-gray-50 p-4 rounded-t-3xl">
+                    <img src="https://hokori.cl/cdn/shop/files/ZOROSTVERDE.jpg?v=1791168050&width=350" alt="Polera Zoro Santoryu" class="w-full h-full object-contain">
+                </div>
+                <span class="ribbon absolute bg-gradient-to-r from-purple-600 to-purple-400 text-white text-xs font-bold px-8 py-1.5 shadow-md z-10">Oversize</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-bold text-red-700 mb-2">🎌 Anime Shirt Zoro Santoryu</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">Camiseta anime SIZE: XXL corte oversize. Diseño exclusivo de Hokori para fans del anime japonés.</p>
+                <span class="btn-ripple inline-block bg-gradient-to-r from-red-600 to-red-400 text-white font-bold py-2 px-6 rounded-full shadow-md group-hover:scale-105 transition-transform self-start mt-auto">Ver en Hokori →</span>
+            </div>
+        </a>
+
+        <!-- 4. Hermoso / Perfecto Marina Vital -->
+        <a href="https://marinavital.cl/products/locion-multiproposito?variant=45455671230774" target="_blank" rel="noopener noreferrer" class="gift-box bg-white rounded-3xl shadow-lg hover:shadow-2xl border-4 border-transparent hover:border-yellow-400 overflow-visible block group flex flex-col">
+            <div class="relative">
+                <div class="gift-img-wrap h-80 md:h-96 bg-gray-50 p-4 rounded-t-3xl">
+                    <img src="https://marinavital.cl/cdn/shop/files/webmullti-2.png?v=1715292159&width=350" alt="Loción Multipropósito Marina Vital" class="w-full h-full object-contain">
+                </div>
+                <span class="ribbon absolute bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-xs font-bold px-8 py-1.5 shadow-md z-10">Premium</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-bold text-red-700 mb-2">✨ Hermoso 500ml → Perfecto</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">Loción multipropósito de algas marinas 500ml. El producto Hermoso que evolucionó a Perfecto por Marina Vital.</p>
+                <span class="btn-ripple inline-block bg-gradient-to-r from-red-600 to-red-400 text-white font-bold py-2 px-6 rounded-full shadow-md group-hover:scale-105 transition-transform self-start mt-auto">Ver en Marina Vital →</span>
+            </div>
+        </a>
+
+        <!-- 5. Llavero Acero Damasco Rauka -->
+        <a href="https://rauka.cl/products/navaja-llavero-de-acero-damasco-11cm-conguillio" target="_blank" rel="noopener noreferrer" class="gift-box bg-white rounded-3xl shadow-lg hover:shadow-2xl border-4 border-transparent hover:border-yellow-400 overflow-visible block group flex flex-col">
+            <div class="relative">
+                <div class="gift-img-wrap h-80 md:h-96 bg-gray-50 p-4 rounded-t-3xl">
+                    <img src="https://rauka.cl/cdn/shop/files/navaja-llavero-acero-damasco-11cm-conguillio-rauka-ficha-tecnica.png?v=1790615068&width=350" alt="Navaja llavero acero damasco" class="w-full h-full object-contain">
+                </div>
+                <span class="ribbon absolute bg-gradient-to-r from-stone-600 to-stone-400 text-white text-xs font-bold px-8 py-1.5 shadow-md z-10">Artesanal</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-bold text-red-700 mb-2">🔑 Llavero Acero Damasco</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">Navaja llavero de acero damasco 11cm por Rauka. Forjado artesanalmente, cada pieza es única e irrepetible.</p>
+                <span class="btn-ripple inline-block bg-gradient-to-r from-red-600 to-red-400 text-white font-bold py-2 px-6 rounded-full shadow-md group-hover:scale-105 transition-transform self-start mt-auto">Ver en Rauka →</span>
+            </div>
+        </a>
+
+    </main>
+
+    <script>
+        // Generar luces navideñas
+        (function() {
+            const container = document.getElementById('lights');
+            const colors = ['#ff0000','#00ff00','#0000ff','#ffff00','#ff00ff','#00ffff'];
+            for (let i = 0; i < 20; i++) {
+                const light = document.createElement('div');
+                light.className = 'light';
+                light.style.left = (i * 5) + '%';
+                light.style.top = '22px';
+                light.style.backgroundColor = colors[i % colors.length];
+                light.style.animationDelay = (i * 0.1) + 's';
+                container.appendChild(light);
+            }
+        })();
+    </script>
+</body>
+</html>
